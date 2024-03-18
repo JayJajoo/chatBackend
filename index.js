@@ -49,6 +49,7 @@ io.on("connection",(socket)=>{
         onlineUsers.set(userId,socket.id);
     })
     socket.on("send-msg",(data)=>{
+        console.log(data)
         const sendUserSocket = onlineUsers.get(data.to);
         if(sendUserSocket){
             socket.to(sendUserSocket).emit("msg-recieve",data)
@@ -56,6 +57,7 @@ io.on("connection",(socket)=>{
     })
     socket.on("delete-event",(data)=>{
         if(data.data[0].to){
+            console.log(data)
             const sendUserSocket = onlineUsers.get(data.data[0].to);
             if(sendUserSocket){
                 socket.to(sendUserSocket).emit("after-delete-event",data.data)
@@ -63,6 +65,7 @@ io.on("connection",(socket)=>{
         }
     })
     socket.on("like-event",(data)=>{
+        console.log(data)
         const sendUserSocket = onlineUsers.get(data.to);
         if(sendUserSocket){
             socket.to(sendUserSocket).emit("after-like-event",data.data)
