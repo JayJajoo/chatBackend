@@ -37,7 +37,7 @@ const server=app.listen(process.env.PORT,()=>{
 const io=socket(server,{
     cors:{
         origin:"https://viberz.netlify.app/",
-        credentials:true,
+        // credentials:true,
     }
 })
 
